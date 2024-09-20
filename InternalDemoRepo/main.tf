@@ -2,7 +2,7 @@ terraform {
 
   backend "s3" {
     bucket = "tanushree-test1"
-    key    = "terraform-states/demo-repo/terraform.tfstate"
+    key    = "terraform-states/internal-demo-repo/terraform.tfstate"
     region = "us-west-2"
   }
   required_providers {
