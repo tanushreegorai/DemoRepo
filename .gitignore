@@ -1,0 +1,8 @@
+**/.terraform/*
+.terraform.lock.*
+*.tfstate
+*.tfstate.*
+_hcp-migrate-configs/
+!_hcp-migrate-configs/terraform.tfstate*
+_hcp-migrate-configs-*/
+!_hcp-migrate-configs*/terraform.tfstate*
