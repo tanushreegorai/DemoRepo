@@ -17,8 +17,8 @@ provider "aws" {
   region = "us-west-2"
 }
 
-resource "aws_iam_role" "very-secure-role" {
-  name = "very-secure-role"
+resource "aws_iam_role" "internal-secure-role" {
+  name = "internal-secure-role"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
