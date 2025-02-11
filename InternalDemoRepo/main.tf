@@ -1,14 +1,17 @@
 terraform {
 
-  backend "s3" {
-    bucket = "tanushree-test1"
-    key    = "terraform-states/internal-demo-repo/terraform.tfstate"
-    region = "us-west-2"
-  }
   required_providers {
     aws = {
       version = ">= 5.39.0"
       source  = "hashicorp/aws"
+    }
+  }
+  cloud {
+    organization = "HashiCorp-tanushree"
+    hostname     = "app.terraform.io"
+    workspaces {
+      project = "internal_demo_repo"
+      name    = "internal_demo_repo_default"
     }
   }
 }
@@ -17,8 +20,8 @@ provider "aws" {
   region = "us-west-2"
 }
 
-resource "aws_iam_role" "very-secure-role" {
-  name = "very-secure-role"
+resource "aws_iam_role" "internal-secure-role" {
+  name = "internal-secure-role"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
