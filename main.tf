@@ -7,7 +7,7 @@ terraform {
     }
   }
   cloud {
-    organization = "HashiCorp-tanushree"
+    organization = "Tanushree-Test-Org"
     hostname     = "app.terraform.io"
     workspaces {
       project = "demo_repo"
