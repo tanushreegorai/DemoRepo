@@ -11,6 +11,13 @@ terraform {
       source  = "hashicorp/aws"
     }
   }
+  cloud {
+    organization = "HashiCorp-tanushree"
+    workspaces {
+      project = "demo_repo"
+      name    = "demo_repo_default"
+    }
+  }
 }
 
 provider "aws" {
