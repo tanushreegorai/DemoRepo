@@ -1,41 +1,35 @@
 terraform {
-
   backend "s3" {
     bucket = "tanushree-test1"
-    key    = "terraform-states/internal-demo-repo/terraform.tfstate"
-    region = "us-west-2"
+    key    = "InternalDemoRepo/terraform.tfstate"
+    region = "ap-south-1"
   }
+
   required_providers {
-    aws = {
-      version = ">= 5.39.0"
-      source  = "hashicorp/aws"
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.5.1"
     }
   }
 }
 
-provider "aws" {
-  region = "us-west-2"
+provider "random" {}
+
+resource "random_uuid" "unique_marker" {
+  # This will generate a new UUID on each Terraform apply
 }
 
-resource "aws_iam_role" "internal-secure-role" {
-  name = "internal-secure-role"
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Sid    = ""
-        Principal = {
-          Service = "ec2.amazonaws.com"
-        }
-      },
-    ]
-  })
-  tags = {
-    createdBy     = "terraform"
-    terraformTime = "${timestamp()}"
-    CanDelete     = "true"
-    product       = "credit-boost"
-  }
+resource "random_id" "execution_signature" {
+  # This will generate a new random ID based on the current timestamp
+  byte_length = 8
+}
+
+output "unique_id" {
+  value       = random_uuid.unique_marker.result
+  description = "A universally unique identifier generated during each Terraform execution"
+}
+
+output "execution_signature" {
+  value       = random_id.execution_signature.hex
+  description = "A random identifier representing the specific runtime instance"
 }
