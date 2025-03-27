@@ -11,13 +11,6 @@ terraform {
       source  = "hashicorp/aws"
     }
   }
-  cloud {
-    organization = "HashiCorp-tanushree"
-    workspaces {
-      project = "demo_repo"
-      name    = "demo_repo_default"
-    }
-  }
 }
 
 provider "aws" {
@@ -25,7 +18,7 @@ provider "aws" {
 }
 
 resource "aws_iam_role" "very-secure-role" {
-  name = "very-secure-role"
+  name = "demoRepo-very-secure-role"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -46,4 +39,3 @@ resource "aws_iam_role" "very-secure-role" {
     product       = "credit-boost"
   }
 }
-# This is the git root

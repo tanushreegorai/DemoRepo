@@ -2,7 +2,7 @@ terraform {
   backend "s3" {
     bucket = "tanushree-test1"
     key    = "InternalDemoRepo/terraform.tfstate"
-    region = "ap-south-1"
+    region = "us-west-2"
   }
 
   required_providers {
