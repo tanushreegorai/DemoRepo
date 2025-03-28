@@ -36,6 +36,6 @@ resource "aws_iam_role" "very-secure-role" {
     createdBy     = "terraform"
     terraformTime = "${timestamp()}"
     CanDelete     = "true"
-    product       = "credit-boost"
+    product       = "Demo-Repo"
   }
 }
