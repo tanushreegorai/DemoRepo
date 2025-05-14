@@ -5,3 +5,7 @@
 *.tfstate.*
 _hcp-migrate-configs/
 !_hcp-migrate-configs/terraform.tfstate*
+
+# These lines were added by the tf-migrate CLI tool
+_hcp-migrate-configs-*/
+!_hcp-migrate-configs*/terraform.tfstate
